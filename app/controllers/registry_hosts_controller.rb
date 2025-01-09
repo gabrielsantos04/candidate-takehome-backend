@@ -61,7 +61,7 @@ class RegistryHostsController < ApplicationController
   private
 
   def check_filter_presence
-    return render json: { error: "Filter parameter is required" }, status: :bad_request unless params[:filter].present?
+    render json: { error: "Filter parameter is required" }, status: :bad_request unless params[:filter].present?
   end
 
   def registry_host_params

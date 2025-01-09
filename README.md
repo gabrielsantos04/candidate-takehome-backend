@@ -6,11 +6,11 @@
 ### Retrieve a listing of all current registry entries
 * GET http://localhost:3000/registry_hosts/list_all
 ### Retrieve a single registry entry by its internal ID
-* GET http://localhost:3000/registry_hosts/`<id>`
+* GET http://localhost:3000/registry_hosts/<id\>
 ### Retrieve all current registry entries matching a “filter”
-* GET http://localhost:3000/registry_hosts/search?filter=`<filter>`
+* GET http://localhost:3000/registry_hosts/search?filter=<filter\>
 ### Update any registry entry’s status from its current status to any of the three permitted options
-* POST http://localhost:3000/registry_hosts/`<id>`/update_status?status=`<status>`
+* POST http://localhost:3000/registry_hosts/<id\>/update_status?status=<status\>
 ### Create a new registry entry
 * POST http://localhost:3000/registry_hosts
   * Body:
@@ -38,6 +38,10 @@
       }
     }
     ```
+    
+## Running specs
+* rspec spec/controllers/registry_hosts_controller_spec.rb
+* rspec spec/models/registry_host_spec.rb
 
 ## Background
 
