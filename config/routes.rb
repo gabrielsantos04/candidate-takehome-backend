@@ -3,4 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :registry_hosts do
+    collection do
+      get 'list_all'
+      get 'search'
+    end
+    member do
+      post 'update_status'
+    end
+  end
 end
