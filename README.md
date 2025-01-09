@@ -1,3 +1,44 @@
+## Using Docker
+* docker-compose up --build
+* docker-compose run web rake db:create db:migrate db:seed
+
+## Using the API
+### Retrieve a listing of all current registry entries
+* GET http://localhost:3000/registry_hosts/list_all
+### Retrieve a single registry entry by its internal ID
+* GET http://localhost:3000/registry_hosts/`<id>`
+### Retrieve all current registry entries matching a “filter”
+* GET http://localhost:3000/registry_hosts/search?filter=`<filter>`
+### Update any registry entry’s status from its current status to any of the three permitted options
+* POST http://localhost:3000/registry_hosts/`<id>`/update_status?status=`<status>`
+### Create a new registry entry
+* POST http://localhost:3000/registry_hosts
+  * Body:
+    ```json
+    {
+      "registry_host": {
+        "source": "source",
+        "destination": "destination",
+        "status": "active",
+        "confidential": false
+      }
+    }
+    ```
+### Update a registry entry
+* PUT http://localhost:3000/registry_hosts/`<id>`
+  * Body:
+    ```json
+    {
+      "registry_host": {
+        "id": 1,
+        "source": "source",
+        "destination": "destination",
+        "status": "active",
+        "confidential": false
+      }
+    }
+    ```
+
 ## Background
 
 Your team is responsible for maintaining a registry of hosts and URLs that redirect to designated destinations.
