@@ -44,6 +44,20 @@ class RegistryHostsController < ApplicationController
     render json: { error: "Registry host not found" }, status: :not_found
   end
 
+  def update
+    @registry_host = RegistryHost.find(params[:id])
+    if @registry_host.update(registry_host_params)
+      render json: @registry_host, serializer: RegistryHostSerializer
+    else
+      render json: {
+        error: "Registry host not updated",
+        msg: @registry_host.errors.full_messages.to_sentence
+      }, status: :bad_request
+    end
+  rescue
+    render json: { error: "Registry host not found" }, status: :not_found
+  end
+
   private
 
   def check_filter_presence

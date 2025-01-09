@@ -10,6 +10,10 @@ class RegistryHostSerializer < ActiveModel::Serializer
   end
 
   def updated_at
-    object.confidential ? "-" : object.updated_at
+    object.confidential ? "-" : object.updated_at.to_s
+  end
+
+  def created_at
+    object.created_at.to_s
   end
 end
